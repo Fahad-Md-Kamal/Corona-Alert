@@ -12,11 +12,14 @@ services:
       sh -c "python manage.py runserver 0.0.0.0:8000"
   
   
-    #   depends_on:
-  #     - db
-  #   expose:
-  #     - "8000"
+#   depends_on:
+# sh -c "python manage.py test && flake8"
+#     - db
+#   expose:
+#     - "8000"
 
-  # db:
-  #   image: mdillon/postgis:9.4-alpine
-  #   container_name: ps01
+# db:
+#   image: mdillon/postgis:9.4-alpine
+#   container_name: ps01
+
+# docker-compose run web_app sh -c "python manage.py test && flake8"
