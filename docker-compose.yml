@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  web_app:
+    build: 
+      context: .
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+  
+  
+    #   depends_on:
+  #     - db
+  #   expose:
+  #     - "8000"
+
+  # db:
+  #   image: mdillon/postgis:9.4-alpine
+  #   container_name: ps01
