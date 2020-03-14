@@ -1,0 +1,2 @@
+--docker exec -it <container name> psql -U <db user> -W <database name>
+docker exec -it corona-alert_db_1 psql -U fahad -W corona_db
