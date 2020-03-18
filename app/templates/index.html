@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+{% load leaflet_tags %}
+<html lang="en">
+<head>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona Locator</title>
+    <style>
+        #gis{
+            height: 90vh;
+            width: 95%;
+            margin-left: 2.5%;
+        }
+    </style>
+    <script src="{% static 'dist/leaflet.ajax.min.js' %}"></script>
+</head>
+<body>
+    <h3>Corona Virus Locator</h3>
+    <br>
+    <script>
+        function our_layers(map, options){
+            var datasets = new L.GeoJSON.AJAX("{% url 'patients' %}",{
+                onEachFeature : function(feature, layer) {
+                    layer.bindPopup(feature.properties.name.toString());
+                }
+            });
+            
+            datasets.addTo(map);
+        }
+    </script>
+    {% leaflet_map "gis" callback="window.our_layers" %}
+</body>
+</html>
